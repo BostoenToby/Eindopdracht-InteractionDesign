@@ -116,7 +116,7 @@
     margin: 0 0 24px;
   }
   
-  p,
+  /* p,
   ol,
   ul,
   dl,
@@ -124,7 +124,7 @@
   address,
   figure {
     margin: 0 0 24px;
-  }
+  } */
   
   ul,
   ol {
@@ -246,35 +246,36 @@
   #COMPONENTS
   \*------------------------------------*/
 
-/*
+/* 
     Component: logo
 */
 
-.c-logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: auto;
-    margin-top: 16px;
-    justify-content: center;
+.c-logo{
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border: 1px solid grey;
+  background-color: yellow;
 }
 
-.c-logo .c-coin {
-    margin-right: 16px;
+/*
+    Component: app
+*/
+
+.c-app__exchange-choise {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
-  #big-coin {
-      fill: #ffdf33;
-  }
+/* .c-app__exchange-choise-label {
+  margin-right: 10px;
+} */
 
-  #inner-coin {
-      fill: #ffd700;
-      border: 0.75px solid #ccac00;
-  }
-
-  #dollar {
-      fill: #665600;
-      border: 0.5px solid #998100;
-  }
+.c-app-choise {
+  max-width: 200px;
+  margin: 0 10px;
+}
 
   /*------------------------------------*\
   #UTILITIES

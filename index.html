@@ -13,29 +13,41 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="script/app.js"></script>
+    <script src="data.json"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 
 </head>
 <body>
-    <header class="o-row">
-        <div class="o-container">
-            <div class="c-header">
-                <h1 class="c-logo">
-                    <svg class="c-coin" xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" viewBox="0 0 64 64">
-                        <title>Exchange Rate logo</title>
-                        <defs>
-
-                        </defs>
-                        <circle id="big-coin" cx="31" cy="31" r="31"/>
-                        <ellipse id="inner-coin" cx="30.83" cy="31.17" rx="27.5" ry="29"/>
-                        <text id="dollar" transform="translate(22 44)">$</text>
-                    </svg>
-                    Exchange Rates
-                </h1>
-            </div>
+    <div class="c-app">
+        <div class="c-app__header">
+            <h1 class="c-logo">
+                Exchange Rates
+            </h1>
         </div>
-    </header>
+        <div class="c-app__exchange-choise">
+            <p class="c-app__exchange-choise-label">Convert <b>EUR</b> into</p>
 
-    <div id="scichart-root" style="width: 800px; height: 600px;"></div>
-    
+            <select name="currency" class="c-app-choise js-choose-currency">
+                <option value="USD" selected>USD</option>
+                <option value="PND">PND</option>
+            </select>
+        </div>
+
+
+        <div class="c-app__exchange-chart">
+            <canvas id="myChart"></canvas>
+        </div>
+
+
+        <div class="c-app__exchange-information">
+            <p>Here comes the information about the chosen currency</p>
+        </div>
+
+        <div class="c-app__favorites">
+            <p>Here come the favorites that the user has chosen</p>
+        </div>
+    </div>
 </body>
 </html>
