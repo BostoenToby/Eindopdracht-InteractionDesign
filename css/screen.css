@@ -266,6 +266,8 @@
   display: flex;
   align-items: center;
   padding: 0 10px;
+  margin: 0 50px 10px 0;
+  min-width: 500px;
 }
 
 /* .c-app__exchange-choise-label {
@@ -273,15 +275,74 @@
 } */
 
 .c-app-choise {
-  max-width: 200px;
+  max-width: 60px;
   margin: 0 10px;
+}
+
+.c-app__exchange{
+  display: flex;
+  align-items: center;
+}
+
+.c-app__exchange-options {
+  display: flex;
+  align-items: center;
+}
+
+.c-app__interval-option {
+  display: flex;
+  gap: 5px;
+}
+
+.c-app__interval-input {
+  height: 20px;
+  max-width: 60px;
+}
+
+.c-app__exchange-chart {
+  margin: 0 20px 0 10px;
+  width: 70%;
+  height: 400px;
+}
+
+.c-app__chart {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.c-app__exchange-calculating {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 50px 50px;
+  column-gap: 10px;
+  row-gap: 0;
+}
+
+.c-app__calculator {
+  height: 30px;
+  width: 100px;
+}
+
+.c-app_exchange-calculating-item {
+  justify-content: center;
+}
+
+.c-app__exchange-coin {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
   /*------------------------------------*\
   #UTILITIES
   \*------------------------------------*/
   
-
+.u-clear-margin {
+  margin: 0;
+}
   
   /*------------------------------------*\
   #STATES

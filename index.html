@@ -26,25 +26,38 @@
                 Exchange Rates
             </h1>
         </div>
-        <div class="c-app__exchange-choise">
-            <p class="c-app__exchange-choise-label">Exchange rate <b>EUR</b> to</p>
-
-            <select name="currency" class="c-app-choise js-choose-currency">
-                <option value="USD" selected>USD</option>
-                <option value="PND">PND</option>
-            </select>
-
-            <button class="js-showChartAndInfo">Show Exchange</button>
+        <div class="c-app__exchange">
+            <div class="c-app__exchange-choise">
+                <p class="c-app__exchange-choise-label u-clear-margin">Exchange rate <b>EUR</b> to</p>
+    
+                <select name="currency" class="c-app-choise js-choose-currency">
+                    <option value="USD" selected>USD</option>
+                    <option value="PND">PND</option>
+                </select>
+                <button class="js-showChartAndInfo">Show Exchange</button>
+            </div>
+            
+            <div class="c-app__interval-option">
+                <p>Range in days</p>
+                <input class="c-app__interval-input js-range-days" type="number" max="690">
+            </div>
         </div>
 
-
-        <div class="c-app__exchange-chart">
-            <canvas id="myChart"></canvas>
-        </div>
-
-
-        <div class="c-app__exchange-information">
-            <p>Here comes the information about the chosen currency</p>
+        <div class="c-app__chart">
+            <div class="c-app__exchange-chart">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="c-app__exchange-info">
+                <p>Max value/month: <span class="js-max-month"></span></p>
+                <p>Max value/year: <span class="js-max-year"></span></p>
+                <p>Current value: <span class="js-current-value"></span></p>
+                <div class="c-app__exchange-calculating">
+                    <p class="c-app__exchange-coin">EUR</p>
+                    <p class="c-app__exchange-coin js-calculating-coin"></p>
+                    <input class="c-app__calculator js-calculate-original" type="number" min="0">
+                    <input class="c-app__calculator js-calculate-result" type="number" min="0">
+                </div>
+            </div>
         </div>
 
         <div class="c-app__favorites">
