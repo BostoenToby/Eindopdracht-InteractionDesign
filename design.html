@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exchange Rates</title>
+        <meta name="description" content="An app about the exchangerates">
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="img/logo.svg">
+        <link rel="icon" type="image/svg" sizes="32x32" href="img/logo-dark.svg">
+        <link rel="icon" type="image/svg" sizes="16x16" href="img/logo-dark.svg">
+    
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="script/app.js"></script>
+        <script src="data.json"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    
+    </head>
+<body>
+    <div class="c-app">
+        <div class="c-app__logo">
+            <h1 class="c-logo">
+                EXCHANGE RATE
+            </h1>
+        </div>
+        <div class="c-app__main">
+            <div class="c-dashboard">
+                <div class="c-dashboard__items u-x-span-9-bp3 u-y-span-2-bp3">
+                    <div class="c-dashboard__header-main">
+                        <ul class="u-remove-style u-clear-margin u-clear-padding c-range-choise">
+                            <li class="c-range-value js-range-value" data-value="Max">Max.</li>
+                            <li class="c-range-value js-range-value" data-value="1J">1J</li>
+                            <li class="c-range-value js-range-value" data-value="6M">6M</li>
+                            <li class="c-range-value js-range-value" data-value="1M">1M</li>
+                            <li class="c-range-value js-range-value" data-value="10D">10D</li>
+                        </ul>
+                        <div class="c-value-choise">
+                            <div class="c-value-selection">
+                                <select class="c-value-select js-choose-currency" name="value" id="value">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="EUR">EUR</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-dashboard-main">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="c-dashboard__items u-x-span-3-bp3">
+                    <div class="c-dashboard__header-calculator">
+                        <p class="c-dashboard__title">Calculator</p>
+                    </div>
+                    <div class="c-calculator">
+                        <div class="c-calculator__start-value">
+                            <input class="c-calculator__custom js-calculator-start" type="number" min="0">
+                            <p>EUR</p>
+                        </div>
+                        <div class="c-calculator__end-value">
+                            <input class="c-calculator__custom js-calculator-end" type="number" min="0">
+                            <select class="c-value-select js-calculator-currency" name="value" id="value">
+                                <option value="USD" selected>USD</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                        </div>
+                        <div class="c-calculator__calculate">
+                            <button class="c-calculator__calculate-button" type="button" data-value>Calculate</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-dashboard__items u-x-span-3-bp3">
+                    <div class="c-dashboard__header-info">
+                        <p class="c-dashboard__title">Info</p>
+                    </div>
+                    <div class="c-info">
+                        <div class="c-info__part">
+                            <p>Highest value/year:</p>
+                            <span class="js-highest-value-year c-info-value"></span>
+                        </div>
+                        <div class="c-info__part">
+                            <p>Highest value/month:</p>
+                            <span class="js-highest-value-month c-info-value"></span>
+                        </div>
+                        <div class="c-info__part">
+                            <p>Current value:</p>
+                            <span class="js-current-value c-info-value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

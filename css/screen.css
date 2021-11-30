@@ -7,116 +7,136 @@
 \*------------------------------------*/
 
 :root {
-    /* colors */
+  /* colors */
+  --global-color-alpha: #211e34;
+  --global-color-alpha-light: #28253b;
+  --global-color-alpha-x-light: #3d3a4e;
 
-    /* opacity */
+  --global-color-beta: #16c05f;
+  --global-color-beta-x-dark: #20bd80;
+  --global-color-beta-xx-dark: #1ea99c;
 
-    /* transitions */
+  --global-color-neutral-x-light: #f2f2f2;
+  --global-color-neutral-light: #e2e2e5;
+  --global-color-neutral: #e1e1e3;
 
-  }
-  
-  /*------------------------------------*\
+  /* Shadows */
+
+  /* border radius */
+
+  /* transitions */
+  --transition-alpha: 0.1s;
+
+  /* Whitespace */
+  --global-baseline: calc(1rem / 3); /*6px*/
+  --global-whitespace-xs: calc(var(--global-baseline) * 2); /*12px*/
+  --global-whitespace-sm: calc(var(--global-baseline) * 3); /*18px*/
+  --global-whitespace-md: calc(var(--global-baseline) * 4); /*24px*/
+  --global-whitespace-lg: calc(var(--global-baseline) * 5); /*30px*/
+  --global-whitespace-xl: calc(var(--global-baseline) * 6); /*36px*/
+}
+
+/*------------------------------------*\
   #GENERIC
   \*------------------------------------*/
-  
-  /*
+
+/*
       Generic: Page
       ---
       Global page styles + universal box-sizing:
   */
-  
-  html {
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: var(--color-back);
-    color: var(--color-front);
-    font-feature-settings: 'zero' 1;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  /*
+
+html {
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: Helvetica, arial, sans-serif;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  font-feature-settings: 'zero' 1;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
   * Remove text-shadow in selection highlight:
   * https://twitter.com/miketaylr/status/12228805301
   *
   * Customize the background color to match your design.
   */
-  
-  ::-moz-selection {
-    background: red;
-    color: white;
-    text-shadow: none;
-  }
-  
-  ::selection {
-    background: red;
-    color: white;
-    text-shadow: none;
-  }
-  
-  /*------------------------------------*\
+
+::-moz-selection {
+  background: var(--global-color-beta);
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: var(--global-color-beta);
+  color: white;
+  text-shadow: none;
+}
+
+/*------------------------------------*\
   #Elements
   \*------------------------------------*/
-  
-  /*
+
+/*
   Elements: Images
   ---
   Default markup for images to make them responsive
   */
-  
-  img {
-    max-width: 100%;
-    vertical-align: top;
-  }
-  
-  /*
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/*
       Elements: typography
       ---
       Default markup for typographic elements
   */
-  
-  h1,
-  h2,
-  h3 {
-    font-weight: 700;
-  }
-  
-  h1 {
-    font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
-  }
-  
-  h2 {
-    font-size: 32px;
-    line-height: 40px;
-    margin: 0 0 24px;
-  }
-  
-  h3 {
-    font-size: 26px;
-    line-height: 32px;
-    margin: 0 0 24px;
-  }
-  
-  h4,
-  h5,
-  h6 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    margin: 0 0 24px;
-  }
-  
-  /* p,
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 48px;
+  margin: 0 0 24px;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0 0 24px;
+}
+
+h3 {
+  font-size: 26px;
+  line-height: 32px;
+  margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 0 0 24px;
+}
+
+/* p,
   ol,
   ul,
   dl,
@@ -125,124 +145,124 @@
   figure {
     margin: 0 0 24px;
   } */
-  
-  ul,
-  ol {
-    padding-left: 24px;
-  }
-  
-  li ul,
-  li ol {
-    margin-bottom: 0;
-  }
-  
-  blockquote {
-    font-style: normal;
-    font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
-  }
-  
-  blockquote * {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  
-  figcaption {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    margin-top: 8px;
-  }
-  
-  hr {
-    border: 0;
-    height: 1px;
-    background: LightGrey;
-    margin: 0 0 24px;
-  }
-  
-  a {
-    color: red;
-    outline-color: red;
-    outline-width: medium;
-    outline-offset: 2px;
-  }
-  
-  a:visited,
-  a:active {
-    color: red;
-  }
-  
-  a:hover,
-  a:focus {
-    color: red;
-  }
-  
-  label,
-  input {
-    display: block;
-  }
-  
-  select {
-    width: 100%;
-  }
-  
-  input::placeholder {
-    color: gray;
-  }
-  
-  /*------------------------------------*\
+
+ul,
+ol {
+  padding-left: 24px;
+}
+
+li ul,
+li ol {
+  margin-bottom: 0;
+}
+
+blockquote {
+  font-style: normal;
+  font-size: 23px;
+  line-height: 32px;
+  margin: 0 0 24px;
+}
+
+blockquote * {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+figcaption {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 8px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: LightGrey;
+  margin: 0 0 24px;
+}
+
+a {
+  color: red;
+  outline-color: red;
+  outline-width: medium;
+  outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+  color: red;
+}
+
+a:hover,
+a:focus {
+  color: red;
+}
+
+label,
+input {
+  display: block;
+}
+
+select {
+  width: 100%;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+/*------------------------------------*\
   #OBJECTS
   \*------------------------------------*/
-  
-  /*
+
+/*
       Object: Button reset
       ---
       Small button reset object
   */
-  
-  .o-button-reset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-  
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
-  
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-  
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-  
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
-  }
-  
-  /*
+
+.o-button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/*
       Object: Hide accessible
       ---
       Accessibly hide any element
   */
-  
-  .o-hide-accessible {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  
-  /*------------------------------------*\
+
+.o-hide-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*------------------------------------*\
   #COMPONENTS
   \*------------------------------------*/
 
@@ -250,178 +270,328 @@
     Component: logo
 */
 
-.c-logo{
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-  border: 1px solid grey;
-  background-color: yellow;
+.c-logo {
+  font-size: 2rem;
+  line-height: 2.66rem;
+  letter-spacing: 0.1rem;
+  /* color: var(--global-color-neutral-xxxx-light) */
+  color: var(--global-color-neutral-x-light);
+  margin: 0;
+  padding: var(--global-whitespace-lg);
 }
 
 /*
     Component: app
 */
 
-.c-app__exchange-choise {
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  margin: 0 50px 10px 0;
-  min-width: 500px;
+.c-app {
+  min-height: 100vh;
+  background-color: var(--global-color-alpha);
 }
 
-/* .c-app__exchange-choise-label {
-  margin-right: 10px;
-} */
-
-.c-app-choise {
-  max-width: 60px;
-  margin: 0 10px;
-}
-
-.c-app__exchange{
+.c-app__logo {
+  height: 70px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.c-app__exchange-options {
-  display: flex;
-  align-items: center;
+.c-app__main {
+  padding: 20px;
 }
 
-.c-app__interval-option {
-  display: flex;
-  gap: 5px;
-}
+/*
+    Component: dashboard
+*/
 
-.c-app__interval-input {
-  height: 20px;
-  max-width: 60px;
-}
-
-.c-app__exchange-chart {
-  margin: 0 20px 0 10px;
-  width: 70%;
-  height: 400px;
-}
-
-.c-app__chart {
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
-}
-
-.c-app__exchange-calculating {
+.c-dashboard {
   display: grid;
-  grid-template-columns: 100px 100px;
-  grid-template-rows: 50px 50px;
-  column-gap: 10px;
-  row-gap: 0;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px;
 }
 
-.c-app__calculator {
-  height: 30px;
-  width: 100px;
+.c-dashboard__items {
+  padding: 5px 0;
+  background-color: var(--global-color-alpha-light);
+  border-radius: 12px;
+  color: var(--global-color-neutral-x-light);
 }
 
-.c-app_exchange-calculating-item {
-  justify-content: center;
+.c-dashboard__header-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
 }
 
-.c-app__exchange-coin {
-  margin: 0;
+.c-dashboard__header-info,
+.c-dashboard__header-calculator {
+  padding: 1rem 0 0 3rem;
+}
+
+.c-dashboard__title {
+  font-size: 3rem;
+  color: var(--global-color-beta);
+}
+
+.c-dashboard-main {
+  padding: 1rem;
+}
+
+/*
+    Component: range
+*/
+
+.c-range-choise {
+  display: flex;
+  gap: 1rem;
+}
+
+.c-range-value {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  padding: 5px 0;
+  border-radius: 10px;
+  background-color: var(--global-color-alpha-x-light);
+  width: 60px;
 }
 
-  /*------------------------------------*\
+.c-range-value:hover,
+.c-range-value:focus {
+  background-color: var(--global-color-neutral-x-light);
+  color: var(--global-color-alpha-x-light);
+}
+
+/*
+    Component: value
+*/
+
+.c-value-choise {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.c-value-select {
+  border-radius: 7px;
+  width: 100px;
+  padding: 5px 0;
+  background-color: var(--global-color-neutral-xxx-light);
+  border: 1px solid var(--global-color-neutral-light);
+}
+
+.c-value-select:hover,
+.c-value-select:focus {
+  background-color: var(--global-color-neutral-x-light);
+  color: var(--global-color-alpha-x-light);
+  border-color: var(--global-color-neutral-light);
+}
+
+/*
+    Component: calculator
+*/
+
+.c-calculator {
+  padding: 0 2rem;
+}
+
+.c-calculator__start-value,
+.c-calculator__end-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 2rem;
+}
+
+.c-calculator__custom {
+  background-color: var(--global-color-alpha-light);
+  border: 0px;
+  border-bottom: 1px solid var(--global-color-alpha-x-light);
+  font-size: 1.5rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+}
+
+.c-calculator__custom:hover,
+.c-calculator__custom:focus,
+.c-calculator__custom:active {
+  border-bottom: 1px solid var(--global-color-neutral-x-light);
+}
+
+.c-calculator__calculate {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.c-calculator__calculate-button {
+  background-image: linear-gradient(to bottom right, var(--global-color-beta), var(--global-color-beta-x-dark), var(--global-color-beta-xx-dark));
+  border: 0;
+  color: var(--global-color-neutral-xx-light);
+  width: 25rem;
+  height: 3rem;
+  border-radius: 10px;
+}
+
+/*
+    Component: info
+*/
+
+.c-info {
+  padding: 0 3rem 0 3rem;
+}
+
+.c-info-value {
+  font-size: 2rem;
+}
+
+.c-info__part {
+  padding-bottom: 2rem;
+}
+
+/*------------------------------------*\
   #UTILITIES
   \*------------------------------------*/
-  
+
 .u-clear-margin {
   margin: 0;
 }
-  
-  /*------------------------------------*\
+
+.u-clear-padding {
+  padding: 0;
+}
+
+.u-remove-style {
+  list-style-type: none;
+}
+
+/* x: horizontal */
+
+@media (min-width: 62em) {
+  /* https://www.w3schools.com/cssref/tryit.asp?filename=trycss_grid-column */
+
+  .u-x-span-3-bp3 {
+    grid-column: span 3;
+  }
+
+  .u-x-span-4-bp3 {
+    grid-column: span 4;
+  }
+
+  .u-x-span-6-bp3 {
+    grid-column: span 6;
+  }
+
+  .u-x-span-8-bp3 {
+    grid-column: span 8;
+  }
+
+  .u-x-span-9-bp3 {
+    grid-column: span 9;
+  }
+
+  .u-start-2 {
+    grid-column-start: 2;
+  }
+  .u-start-4 {
+    grid-column-start: 4;
+  }
+  .u-start-6 {
+    grid-column-start: 6;
+  }
+  .u-start-8 {
+    grid-column-start: 8;
+  }
+}
+
+/* y: vertical */
+
+@media (min-width: 62em) {
+  .u-y-span-2-bp3 {
+    grid-row: span 2;
+  }
+}
+
+/*------------------------------------*\
   #STATES
   \*------------------------------------*/
-  
-  /*
+
+/*
       Change the theme using CSS vars.
   */
-  
-  /* Night version: just switch the light and dark vars */
-  
-  /*------------------------------------*\
+
+/* Night version: just switch the light and dark vars */
+
+/*------------------------------------*\
   #MEDIA
   \*------------------------------------*/
-  
-  /*
+
+/*
       Print styles.
       ---
       Inlined to avoid the additional HTTP request:
       http://www.phpied.com/delay-loading-your-print-css/
   */
-  
-  @media print {
-    *,
-    *:before,
-    *:after {
-      background: transparent !important;
-      color: #000 !important;
-      /* Black prints faster:
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster:
           http://www.sanbeiji.com/archives/953 */
-      box-shadow: none !important;
-      text-shadow: none !important;
-    }
-    a,
-    a:visited {
-      text-decoration: underline;
-    }
-    a[href]:after {
-      content: ' (' attr(href) ')';
-    }
-    abbr[title]:after {
-      content: ' (' attr(title) ')';
-    }
-    /*
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: ' (' attr(href) ')';
+  }
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
+  }
+  /*
       * Don't show links that are fragment identifiers,
       * or use the `javascript:` pseudo protocol
       */
-    a[href^='#']:after,
-    a[href^='javascript:']:after {
-      content: '';
-    }
-    pre {
-      white-space: pre-wrap !important;
-    }
-    pre,
-    blockquote {
-      border: 1px solid #999;
-      page-break-inside: avoid;
-    }
-    /*
+  a[href^='#']:after,
+  a[href^='javascript:']:after {
+    content: '';
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /*
       * Printing Tables:
       * http://css-discuss.incutio.com/wiki/Printing_Tables
       */
-    thead {
-      display: table-header-group;
-    }
-    tr,
-    img {
-      page-break-inside: avoid;
-    }
-    p,
-    h2,
-    h3 {
-      orphans: 3;
-      widows: 3;
-    }
-    h2,
-    h3 {
-      page-break-after: avoid;
-    }
+  thead {
+    display: table-header-group;
   }
-  
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

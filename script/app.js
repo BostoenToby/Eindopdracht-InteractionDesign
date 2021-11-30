@@ -15,33 +15,111 @@ const myChart = function (title, labels, data) {
         {
           label: title,
           data: data,
+          borderColor: '#16c05f',
+          backgroundColor: '#1ea99c',
+          borderWidth: 1,
         },
       ],
     },
     options: {
-      maintainAspectRatio: false,
+      // maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#E1E1E3',
+            font: {
+              size: 16,
+            },
+          },
+        },
+      },
+      scales: {
+        y: {
+          ticks: {
+            color: '#E1E1E3',
+            font: {
+              size: 16,
+            },
+          },
+        },
+        x: {
+          ticks: {
+            color: '#E1E1E3',
+            font: {
+              size: 16,
+            },
+          },
+        },
+      },
     },
   });
 };
 
-const ChooseExchange = function () {
-  document.querySelector('.js-showChartAndInfo').addEventListener('click', function () {
+const CustomCalculator = function (newCurrency) {
+  return JsonObject.data[totalDays - 1].rates[newCurrency];
+};
+
+const EventListeners = function () {
+  document.querySelector('.js-choose-currency').addEventListener('change', function () {
     chosenCoin = document.querySelector('.js-choose-currency').value;
     showExhangeRate();
   });
 
-  document.querySelector('.js-calculate-original').addEventListener('change', function () {
-    document.querySelector('.js-calculate-result').value = document.querySelector('.js-calculate-original').value * currentValue;
+  const rangeValues = document.querySelectorAll('.js-range-value');
+  for (let value of rangeValues) {
+    value.addEventListener('click', function () {
+      console.log(value.getAttribute('data-value'));
+      let range = value.getAttribute('data-value');
+      if (range == 'Max') {
+        chosenDays = totalDays;
+        showExhangeRate();
+      } else if (range == '1J') {
+        chosenDays = 365;
+        showExhangeRate();
+      } else if (range == '6M') {
+        chosenDays = 183;
+        showExhangeRate();
+      } else if (range == '1M') {
+        chosenDays = 31;
+        showExhangeRate();
+      } else if (range == '10D') {
+        chosenDays = 10;
+        showExhangeRate();
+      } else {
+        console.log('er is een fout bij de keuze van de range');
+      }
+    });
+  }
+
+  // document.querySelector('.js-calculator-start').addEventListener('change', function(){
+  //   if (currentValueCalculator){
+  //     document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * currentValueCalculator;
+  //   } else {
+  //     document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * currentValue;
+  //   }
+  // })
+
+  // document.querySelector('.js-calculator-end').addEventListener('change', function(){
+  //   if (currentValueCalculator){
+  //     document.querySelector('.js-calculator-start').value = document.querySelector('.js-calculator-end').value * currentValueCalculator;
+  //   } else {
+  //     document.querySelector('.js-calculator-start').value = document.querySelector('.js-calculator-end').value * currentValue;
+  //   }
+  // })
+
+  document.querySelector('.js-calculator-currency').addEventListener('change', function () {
+    let newCurrency = document.querySelector('.js-calculator-currency').value;
+    document.querySelector('.c-calculator__calculate-button').setAttribute('data-value', CustomCalculator(newCurrency));
+    document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * CustomCalculator(newCurrency);
   });
 
-  document.querySelector('.js-calculate-result').addEventListener('change', function () {
-    document.querySelector('.js-calculate-original').value = document.querySelector('.js-calculate-result').value / currentValue;
-  });
-
-  document.querySelector('.js-range-days').addEventListener('change', function () {
-    console.log('eerste test');
-    chosenDays = document.querySelector('.js-range-days').value;
-    showExhangeRate();
+  document.querySelector('.c-calculator__calculate-button').addEventListener('click', function () {
+    let currentValueCalculator = document.querySelector('.c-calculator__calculate-button').getAttribute('data-value');
+    if (currentValueCalculator) {
+      document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * currentValueCalculator;
+    } else {
+      document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * currentValue;
+    }
   });
 };
 
@@ -51,6 +129,7 @@ const readJson = function (JsonData) {
   showExchangeValues(JsonObject);
 };
 
+//functie om het maximaal in een bepaalde periode te berekenen
 const showMaxExhangeStats = function (range) {
   counter = totalDays - range;
   let maxValue = 0;
@@ -63,8 +142,8 @@ const showMaxExhangeStats = function (range) {
   return maxValue;
 };
 
+//haal de data op die nodig is en vul tergelijk de "info" aan
 const showExhangeRate = function () {
-  console.log('test');
   var data = [];
   var labels = [];
   const title = `Exchange rate ${chosenCoin}`;
@@ -72,18 +151,21 @@ const showExhangeRate = function () {
   for (let item in JsonObject.data) {
     totalDays += 1;
   }
-  counter = totalDays - chosenDays;
+  counter = 0;
   //get data for chart
-  while (counter < totalDays) {
+  while (counter < chosenDays) {
     data.push(JsonObject.data[counter].rates[chosenCoin]);
     labels.push(JsonObject.data[counter].date);
     counter += 1;
   }
   currentValue = JsonObject.data[totalDays - 1].rates[chosenCoin];
-  document.querySelector('.js-max-month').innerHTML = showMaxExhangeStats(30, chosenCoin);
-  document.querySelector('.js-max-year').innerHTML = showMaxExhangeStats(365, chosenCoin);
-  document.querySelector('.js-current-value').innerHTML = currentValue;
-  document.querySelector('.js-calculating-coin').innerHTML = chosenCoin;
+  document.querySelector('.js-highest-value-year').innerHTML = `${showMaxExhangeStats(365, chosenCoin)} ${chosenCoin}`;
+  document.querySelector('.js-highest-value-month').innerHTML = `${showMaxExhangeStats(30, chosenCoin)} ${chosenCoin}`;
+  document.querySelector('.js-current-value').innerHTML = `${currentValue} ${chosenCoin}`;
+  // document.querySelector('.js-max-month').innerHTML = showMaxExhangeStats(30, chosenCoin);
+  // document.querySelector('.js-max-year').innerHTML = showMaxExhangeStats(365, chosenCoin);
+  // document.querySelector('.js-current-value').innerHTML = currentValue;
+  // document.querySelector('.js-calculating-coin').innerHTML = chosenCoin;
 
   if (screenChart != null) {
     screenChart.destroy();
@@ -91,6 +173,7 @@ const showExhangeRate = function () {
   myChart(title, labels, data);
 };
 
+//de select's aanpassen met de currencies
 const showExchangeValues = function (JsonObject) {
   let HtmlString = '';
   for (let exchange in JsonObject.data[0].rates) {
@@ -101,8 +184,9 @@ const showExchangeValues = function (JsonObject) {
     }
   }
   document.querySelector('.js-choose-currency').innerHTML = HtmlString;
+  document.querySelector('.js-calculator-currency').innerHTML = HtmlString;
   showExhangeRate();
-  ChooseExchange();
+  EventListeners();
 };
 
 function loadJSON(callback) {
