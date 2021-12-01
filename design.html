@@ -47,10 +47,10 @@
                         </div>
                     </div>
                     <div class="c-dashboard-main">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="mainChart"></canvas>
                     </div>
                 </div>
-                <div class="c-dashboard__items u-x-span-3-bp3">
+                <div class="c-dashboard__items u-x-span-3-bp3 c-dashboard__calculator">
                     <div class="c-dashboard__header-calculator">
                         <p class="c-dashboard__title">Calculator</p>
                     </div>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="c-dashboard__items u-x-span-3-bp3">
+                <div class="c-dashboard__items u-x-span-3-bp3 c-dashboard__info">
                     <div class="c-dashboard__header-info">
                         <p class="c-dashboard__title">Info</p>
                     </div>
@@ -89,6 +89,24 @@
                             <span class="js-current-value c-info-value"></span>
                         </div>
                     </div>
+                </div>
+                <div class="c-dashboard__items u-x-span-4-bp3">
+                    <div class="c-dashboard__header-favorites">
+                        <p class="c-dashboard__title">GBP (Great-Britain Pound)</p>
+                    </div>
+                    <div class="c-dashboard-main"><canvas id="sideChartGBP"></canvas></div>
+                </div>
+                <div class="c-dashboard__items u-x-span-4-bp3">
+                    <div class="c-dashboard__header-favorites">
+                        <p class="c-dashboard__title">AUD (Australian Dollar)</p>
+                    </div>
+                    <canvas id="sideChartAUD"></canvas>
+                </div>
+                <div class="c-dashboard__items u-x-span-4-bp3">
+                    <div class="c-dashboard__header-favorites">
+                        <p class="c-dashboard__title">USD (United States Dollar)</p>
+                    </div>
+                    <canvas id="sideChartUSD"></canvas>
                 </div>
             </div>
         </div>

@@ -329,6 +329,10 @@ input::placeholder {
   padding: 1rem 0 0 3rem;
 }
 
+.c-dashboard__header-favorites {
+  padding: 1rem 0 0 3rem;
+}
+
 .c-dashboard__title {
   font-size: 3rem;
   color: var(--global-color-beta);
@@ -450,6 +454,15 @@ input::placeholder {
 
 .c-info__part {
   padding-bottom: 2rem;
+}
+
+@media (max-width: 992px){
+  .c-dashboard{
+    display: block;
+  }
+  .c-dashboard__items {
+    margin-top: 20px;
+  }
 }
 
 /*------------------------------------*\
