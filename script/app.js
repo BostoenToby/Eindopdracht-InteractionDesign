@@ -57,6 +57,9 @@ const MainChart = function (title, labels, data) {
 };
 
 const SideChart = function (title, labels, data, id) {
+  var style = getComputedStyle(document.body);
+  let backgroundColorChart = style.getPropertyValue('--global-color-beta');
+  let colorChart = style.getPropertyValue('--global-color-beta');
   let sideChart = document.getElementById(`sideChart${id}`).getContext('2d');
   favoritesChart = new Chart(sideChart, {
     type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -111,6 +114,17 @@ const CustomCalculator = function (newCurrency) {
 };
 
 const EventListeners = function () {
+  let counter_switches = 0;
+  let color;
+  document.querySelector('.js-switch').addEventListener('click', function () {
+    counter_switches += 1;
+    if (counter_switches % 2 == 0) {
+      document.body.classList.remove('is-day');
+    } else {
+      document.body.classList.add('is-day');
+    }
+  });
+
   document.querySelector('.js-choose-currency').addEventListener('change', function () {
     chosenCoin = document.querySelector('.js-choose-currency').value;
     console.log('changed currency');
