@@ -6,6 +6,13 @@ let JsonObject,
   chosenDays = 30,
   chosenCoin = 'USD';
 
+//colors day
+var style = getComputedStyle(document.documentElement)
+let titleColorChart, axisColorChart;
+
+titleColorChart = style.getPropertyValue('--global-color-neutral');
+axisColorChart = style.getPropertyValue('--global-color-neutral');
+
 const MainChart = function (title, labels, data) {
   let MainChart = document.getElementById('mainChart').getContext('2d');
   screenChart = new Chart(MainChart, {
@@ -27,7 +34,7 @@ const MainChart = function (title, labels, data) {
       plugins: {
         legend: {
           labels: {
-            color: '#E1E1E3',
+            color: titleColorChart,
             font: {
               size: 16,
             },
@@ -37,7 +44,8 @@ const MainChart = function (title, labels, data) {
       scales: {
         y: {
           ticks: {
-            color: '#E1E1E3',
+            // color: '#E1E1E3',
+            color: axisColorChart,
             font: {
               size: 16,
             },
@@ -45,7 +53,7 @@ const MainChart = function (title, labels, data) {
         },
         x: {
           ticks: {
-            color: '#E1E1E3',
+            color: axisColorChart,
             font: {
               size: 16,
             },
@@ -80,7 +88,7 @@ const SideChart = function (title, labels, data, id) {
       plugins: {
         legend: {
           labels: {
-            color: '#E1E1E3',
+            color: titleColorChart,
             font: {
               size: 16,
             },
@@ -90,7 +98,7 @@ const SideChart = function (title, labels, data, id) {
       scales: {
         y: {
           ticks: {
-            color: '#E1E1E3',
+            color: axisColorChart,
             font: {
               size: 16,
             },
@@ -98,7 +106,7 @@ const SideChart = function (title, labels, data, id) {
         },
         x: {
           ticks: {
-            color: '#E1E1E3',
+            color: axisColorChart,
             font: {
               size: 16,
             },
@@ -118,11 +126,16 @@ const EventListeners = function () {
   let color;
   document.querySelector('.js-switch').addEventListener('click', function () {
     counter_switches += 1;
-    if (counter_switches % 2 == 0) {
+    if (counter_switches % 2 == 0) { //night
       document.body.classList.remove('is-day');
-    } else {
+      titleColorChart = style.getPropertyValue('--global-color-neutral');
+      axisColorChart = style.getPropertyValue('--global-color-neutral');
+    } else { //day
       document.body.classList.add('is-day');
+      titleColorChart = style.getPropertyValue('--global-color-day-x-dark');
+      axisColorChart = style.getPropertyValue('--global-color-day-x-dark');
     }
+    showExchangeRate();
   });
 
   document.querySelector('.js-choose-currency').addEventListener('change', function () {

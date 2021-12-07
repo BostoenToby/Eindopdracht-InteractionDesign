@@ -36,7 +36,7 @@
   --global-whitespace-xl: calc(var(--global-baseline) * 6); /*36px*/
 }
 
-.is-day {
+/* .is-day {
   --global-color-day-dark: #211E34;
   --global-color-day: #211e344d;
   --global-color-day-light: #100c2d26;
@@ -45,6 +45,15 @@
 
   --global-color-neutral-dark: #0f3557;
   --global-color-neutral-x-dark: #062643;
+} */
+
+.is-day {
+  --global-color-day-xx-dark: #3C4058;
+  --global-color-day-x-dark: #818387;
+  --global-color-day-dark: #C3C4C7;
+  --global-color-day: #c3c4c780;
+  --global-color-day-light: #F6F8FA;
+  --global-color-day-x-light: #FFFFFF;
 }
 
 /*------------------------------------*\
@@ -281,6 +290,12 @@ input::placeholder {
     Component: toggle switch
 */
 
+.c-switch {
+  padding-top: 10px;
+  position: absolute;
+  right: 20px;
+}
+
 .c-switch-mode {
   position: relative;
   display: inline-block;
@@ -296,7 +311,7 @@ input::placeholder {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--global-color-day-light, var(--global-color-alpha-x-light));
+  background-color: var(--global-color-day-dark, var(--global-color-alpha-x-light));
   transform: translateX(0);
 }
 
@@ -313,10 +328,8 @@ input::placeholder {
 }
 
 .c-switch-checkbox:checked + .c-switch-circle::before {
-  content: "day";
-  color: var(--global-color-neutral);
   transform: translateX(26px);
-  background-color: var(--global-color-neutral);
+  background-color: var(--global-color-day-x-dark);
 }
 
 /* 
@@ -328,7 +341,7 @@ input::placeholder {
   line-height: 2.66rem;
   letter-spacing: 0.1rem;
   /* color: var(--global-color-neutral-xxxx-light) */
-  color: var(--global-color-neutral-x-dark, var(--global-color-neutral-x-light));
+  color: var(--global-color-day-xx-dark, var(--global-color-neutral-x-light));
   margin: 0;
   padding: var(--global-whitespace-lg);
 }
@@ -367,7 +380,8 @@ input::placeholder {
   padding: 5px 0;
   background-color: var(--global-color-day-light, var(--global-color-alpha-light));
   border-radius: 12px;
-  color: var(--global-color-day-dark, var(--global-color-neutral-x-light));
+  color: var(--global-color-day-xx-dark, var(--global-color-neutral-x-light));
+  /* schaduw toevoegen */
 }
 
 .c-dashboard__header-main {
@@ -410,8 +424,9 @@ input::placeholder {
   align-items: center;
   padding: 5px 0;
   border-radius: 10px;
-  background-color: var(--global-color-day-light, var(--global-color-alpha-x-light));
+  background-color: var(--global-color-day, var(--global-color-alpha-x-light));
   width: 60px;
+  cursor: pointer;
 }
 
 .c-range-value:hover,
@@ -419,6 +434,7 @@ input::placeholder {
   /* background-color: var(--global-color-neutral-x-light); */
   background-color: var(--global-color-day, var(--global-color-neutral-x-light));
   color: var(--global-color-day-x-light, var(--global-color-alpha-x-light));
+  /* schaduw toevoegen */
 }
 
 /*
@@ -435,15 +451,16 @@ input::placeholder {
   border-radius: 7px;
   width: 100px;
   padding: 5px 0;
-  background-color: var(--global-color-day-light, var(--global-color-neutral-xxx-light));
+  background-color: var(--global-color-day, var(--global-color-neutral-xxx-light));
   border: 1px solid var(--global-color-neutral-light);
 }
 
 .c-value-select:hover,
-.c-value-select:focus {
+.c-value-select:focus,
+.c-value-select:active {
   background-color: var(--global-color-day, var(--global-color-neutral-x-light));
-  color: var(--global-color-day-x-light, var(--global-color-alpha-x-light));
-  border-color: var(--global-color-neutral-light);
+  color: var(--global-color-day-xx-darkdark, var(--global-color-alpha-x-light));
+  border-color: var(--global-color-neutral-light);   
 }
 
 /*
@@ -464,7 +481,7 @@ input::placeholder {
 }
 
 .c-calculator__custom {
-  background-color: var(--global-color-day-xx-light, var(--global-color-alpha-light));
+  background-color: var(--global-color-day-light, var(--global-color-alpha-light));
   border: 0px;
   border-bottom: 1px solid var(--global-color-day, var(--global-color-alpha-x-light));
   font-size: 1.5rem;
@@ -488,7 +505,7 @@ input::placeholder {
 .c-calculator__calculate-button {
   background-image: linear-gradient(to bottom right, var(--global-color-beta), var(--global-color-beta-dark), var(--global-color-beta-x-dark));
   border: 0;
-  color: var(--global-color-neutral-xx-light);
+  color: var(--global-color-neutral-x-light);
   width: 25rem;
   height: 3rem;
   border-radius: 10px;
