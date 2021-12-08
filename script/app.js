@@ -1,13 +1,18 @@
 let JsonObject,
   screenChart,
+  sideChart,
   totalDays,
-  favoritesChart,
+  favoritesChartGBP,
+  favoritesChartUSD,
+  favoritesChartAUD,
   currentValue,
   chosenDays = 30,
-  chosenCoin = 'USD';
+  chosenCoin = 'USD',
+  CalcCurrency = 'USD',
+  basicDone = false;
 
 //colors day
-var style = getComputedStyle(document.documentElement)
+var style = getComputedStyle(document.documentElement);
 let titleColorChart, axisColorChart;
 
 titleColorChart = style.getPropertyValue('--global-color-neutral');
@@ -65,56 +70,200 @@ const MainChart = function (title, labels, data) {
 };
 
 const SideChart = function (title, labels, data, id) {
-  var style = getComputedStyle(document.body);
-  let backgroundColorChart = style.getPropertyValue('--global-color-beta');
-  let colorChart = style.getPropertyValue('--global-color-beta');
-  let sideChart = document.getElementById(`sideChart${id}`).getContext('2d');
-  favoritesChart = new Chart(sideChart, {
-    type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: title,
-          data: data,
-          borderColor: '#16c05f',
-          backgroundColor: '#1ea99c',
-          borderWidth: 1,
+  // console.log(`sidechart --> ${axisColorChart}`);
+  sideChartUSD = document.getElementById(`sideChartUSD`).getContext('2d');
+  sideChartGBP = document.getElementById(`sideChartGBP`).getContext('2d');
+  sideChartAUD = document.getElementById(`sideChartAUD`).getContext('2d');
+
+  // sideChart = document.getElementById(`sideChart${id}`).getContext('2d');
+  if (id == 'GBP') {
+    favoritesChartGBP = new Chart(sideChartGBP, {
+      type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: title,
+            data: data,
+            borderColor: '#16c05f',
+            backgroundColor: '#1ea99c',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: titleColorChart,
+              font: {
+                size: 16,
+              },
+            },
+          },
         },
-      ],
-    },
-    options: {
-      // maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          labels: {
-            color: titleColorChart,
-            font: {
-              size: 16,
+        scales: {
+          y: {
+            ticks: {
+              color: axisColorChart,
+              font: {
+                size: 16,
+              },
+            },
+          },
+          x: {
+            ticks: {
+              color: axisColorChart,
+              font: {
+                size: 16,
+              },
             },
           },
         },
       },
-      scales: {
-        y: {
-          ticks: {
-            color: axisColorChart,
-            font: {
-              size: 16,
+    });
+  } else if (id == 'USD') {
+    favoritesChartUSD = new Chart(sideChartUSD, {
+      type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: title,
+            data: data,
+            borderColor: '#16c05f',
+            backgroundColor: '#1ea99c',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: titleColorChart,
+              font: {
+                size: 16,
+              },
             },
           },
         },
-        x: {
-          ticks: {
-            color: axisColorChart,
-            font: {
-              size: 16,
+        scales: {
+          y: {
+            ticks: {
+              color: axisColorChart,
+              font: {
+                size: 16,
+              },
+            },
+          },
+          x: {
+            ticks: {
+              color: axisColorChart,
+              font: {
+                size: 16,
+              },
             },
           },
         },
       },
-    },
-  });
+    });
+  } else if (id == 'AUD') {
+    favoritesChartAUD = new Chart(sideChartAUD, {
+      type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: title,
+            data: data,
+            borderColor: '#16c05f',
+            backgroundColor: '#1ea99c',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: titleColorChart,
+              font: {
+                size: 16,
+              },
+            },
+          },
+        },
+        scales: {
+          y: {
+            ticks: {
+              color: axisColorChart,
+              font: {
+                size: 16,
+              },
+            },
+          },
+          x: {
+            ticks: {
+              color: axisColorChart,
+              font: {
+                size: 16,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+  // favoritesChart = new Chart(sideChart, {
+  //   type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+  //   data: {
+  //     labels: labels,
+  //     datasets: [
+  //       {
+  //         label: title,
+  //         data: data,
+  //         borderColor: '#16c05f',
+  //         backgroundColor: '#1ea99c',
+  //         borderWidth: 1,
+  //       },
+  //     ],
+  //   },
+  //   options: {
+  //     // maintainAspectRatio: false,
+  //     plugins: {
+  //       legend: {
+  //         labels: {
+  //           color: titleColorChart,
+  //           font: {
+  //             size: 16,
+  //           },
+  //         },
+  //       },
+  //     },
+  //     scales: {
+  //       y: {
+  //         ticks: {
+  //           color: axisColorChart,
+  //           font: {
+  //             size: 16,
+  //           },
+  //         },
+  //       },
+  //       x: {
+  //         ticks: {
+  //           color: axisColorChart,
+  //           font: {
+  //             size: 16,
+  //           },
+  //         },
+  //       },
+  //     },
+  //   },
+  // });
 };
 
 const CustomCalculator = function (newCurrency) {
@@ -122,32 +271,36 @@ const CustomCalculator = function (newCurrency) {
 };
 
 const EventListeners = function () {
+  document.querySelector('.c-calculator__calculate-button').setAttribute('data-value', CustomCalculator(CalcCurrency));
+
   let counter_switches = 0;
-  let color;
   document.querySelector('.js-switch').addEventListener('click', function () {
     counter_switches += 1;
-    if (counter_switches % 2 == 0) { //night
+    if (counter_switches % 2 == 0) {
+      //night
       document.body.classList.remove('is-day');
       titleColorChart = style.getPropertyValue('--global-color-neutral');
       axisColorChart = style.getPropertyValue('--global-color-neutral');
-    } else { //day
+    } else {
+      //day
       document.body.classList.add('is-day');
-      titleColorChart = style.getPropertyValue('--global-color-day-x-dark');
-      axisColorChart = style.getPropertyValue('--global-color-day-x-dark');
+      titleColorChart = '#818387';
+      axisColorChart = '#818387';
     }
     showExchangeRate();
+    showExchangeRate(coin='USD')
+    showExchangeRate(coin='GBP')
+    showExchangeRate(coin='AUD')
   });
 
   document.querySelector('.js-choose-currency').addEventListener('change', function () {
     chosenCoin = document.querySelector('.js-choose-currency').value;
-    console.log('changed currency');
     showExchangeRate();
   });
 
   const rangeValues = document.querySelectorAll('.js-range-value');
   for (let value of rangeValues) {
     value.addEventListener('click', function () {
-      console.log(value.getAttribute('data-value'));
       let range = value.getAttribute('data-value');
       if (range == 'Max') {
         chosenDays = totalDays;
@@ -171,9 +324,9 @@ const EventListeners = function () {
   }
 
   document.querySelector('.js-calculator-currency').addEventListener('change', function () {
-    let newCurrency = document.querySelector('.js-calculator-currency').value;
-    document.querySelector('.c-calculator__calculate-button').setAttribute('data-value', CustomCalculator(newCurrency));
-    document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * CustomCalculator(newCurrency);
+    CalcCurrency = document.querySelector('.js-calculator-currency').value;
+    document.querySelector('.c-calculator__calculate-button').setAttribute('data-value', CustomCalculator(CalcCurrency));
+    document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * CustomCalculator(CalcCurrency);
   });
 
   document.querySelector('.c-calculator__calculate-button').addEventListener('click', function () {
@@ -184,6 +337,7 @@ const EventListeners = function () {
       document.querySelector('.js-calculator-end').value = document.querySelector('.js-calculator-start').value * currentValue;
     }
   });
+  basicDone = true;
 };
 
 const readJson = function (JsonData) {
@@ -228,6 +382,7 @@ const showExchangeRate = function (coin = null) {
     document.querySelector('.js-highest-value-month').innerHTML = `${showMaxExhangeStats(30, chosenCoin)} ${chosenCoin}`;
     document.querySelector('.js-current-value').innerHTML = `${currentValue} ${chosenCoin}`;
     if (screenChart) {
+      console.log('destroy main chart');
       screenChart.destroy();
     }
     MainChart(title, labels, data);
@@ -238,6 +393,16 @@ const showExchangeRate = function (coin = null) {
       counter += 1;
     }
     const title = `Exchange rate ${coin}`;
+    console.log(`change --> ${basicDone} + coin --> ${coin}`);
+    if (basicDone == true){
+      if (coin == 'USD') {
+        favoritesChartUSD.destroy();
+      } else if (coin == 'AUD') {
+        favoritesChartAUD.destroy();
+      } else if (coin == "GBP") {
+        favoritesChartGBP.destroy();
+      }
+    }
     SideChart(title, labels, data, coin);
   }
 };
@@ -246,6 +411,7 @@ const showFavorites = function () {
   showExchangeRate('GBP');
   showExchangeRate('AUD');
   showExchangeRate('USD');
+
 };
 
 //de select's aanpassen met de currencies
