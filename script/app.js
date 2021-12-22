@@ -70,7 +70,6 @@ const MainChart = function (title, labels, data) {
 };
 
 const SideChart = function (title, labels, data, id) {
-  // console.log(`sidechart --> ${axisColorChart}`);
   sideChartUSD = document.getElementById(`sideChartUSD`).getContext('2d');
   sideChartGBP = document.getElementById(`sideChartGBP`).getContext('2d');
   sideChartAUD = document.getElementById(`sideChartAUD`).getContext('2d');
@@ -372,28 +371,32 @@ const showExchangeRate = function (coin = null) {
   //get data for chart
   if (coin == null) {
     while (counter < chosenDays) {
-      data.push(JsonObject.data[counter].rates[chosenCoin]);
-      labels.push(JsonObject.data[counter].date);
+      // data.push(JsonObject.data[counter].rates[chosenCoin]);
+      // labels.push(JsonObject.data[counter].date);
+      data.push(JsonObject.data[totalDays-counter-1].rates[chosenCoin]);
+      labels.push(JsonObject.data[totalDays-counter-1].date);
       counter += 1;
     }
+    data.reverse();
+    labels.reverse();
     const title = `Exchange rate ${chosenCoin}`;
     currentValue = JsonObject.data[totalDays - 1].rates[chosenCoin];
     document.querySelector('.js-highest-value-year').innerHTML = `${showMaxExhangeStats(365, chosenCoin)} ${chosenCoin}`;
     document.querySelector('.js-highest-value-month').innerHTML = `${showMaxExhangeStats(30, chosenCoin)} ${chosenCoin}`;
     document.querySelector('.js-current-value').innerHTML = `${currentValue} ${chosenCoin}`;
     if (screenChart) {
-      console.log('destroy main chart');
       screenChart.destroy();
     }
     MainChart(title, labels, data);
   } else {
     while (counter < 10) {
-      data.push(JsonObject.data[counter].rates[coin]);
-      labels.push(JsonObject.data[counter].date);
+      data.push(JsonObject.data[totalDays-counter-1].rates[coin]);
+      labels.push(JsonObject.data[totalDays-counter-1].date);
       counter += 1;
     }
+    data.reverse();
+    labels.reverse();
     const title = `Exchange rate ${coin}`;
-    console.log(`change --> ${basicDone} + coin --> ${coin}`);
     if (basicDone == true){
       if (coin == 'USD') {
         favoritesChartUSD.destroy();
